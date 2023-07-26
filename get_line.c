@@ -47,5 +47,5 @@ ssize_t get_line(char **lineptr, size_t *n, int fd)
 
 	if (bytes == 0 && c == '\0')
 		return (-1);
-	return (0);
+	return (bytes);
 }
