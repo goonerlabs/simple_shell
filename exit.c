@@ -3,7 +3,7 @@
 /**
  * __exit - exits the shell
  * @av: the arguments vector
- * @env: the environment vector
+ * @args: the environment vector
  * Return: void
  */
 

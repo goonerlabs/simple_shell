@@ -3,8 +3,9 @@
 /**
  * special_commands - function that checks for some specific commands
  * @command: command to check
- * @env: the environment
- * Return: void
+ * @env: the environment variables
+ * @args: user entry
+ * Return: onError(-1)
  */
 
 int special_commands(char **command, char **env, char *args)

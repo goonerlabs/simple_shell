@@ -2,13 +2,13 @@
 
 /**
  * handle_env - function that handles env command
+ * @env: environment variable
+ *
+ * Return: onSuccess(0)
  */
 
 int handle_env(char **env)
 {
-	/*extern char **environ;*/
-	/*char **env = environ;*/
-
 	for (; *env != NULL; env++)
 	{
 		int length = 0;

@@ -7,9 +7,9 @@
  * Return: pointer to memory
  */
 
-void* _malloc(int size)
+void *_malloc(int size)
 {
-	void* p = NULL;
+	void *p = NULL;
 
 	p = malloc(sizeof(char) * (size + 1));
 	if (p == NULL)

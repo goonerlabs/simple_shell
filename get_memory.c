@@ -25,7 +25,7 @@ char *reallocate_memory(char *buf, int bufs)
 {
 	char *result = NULL;
 	int i = 0;
-	
+
 	i = _strlen(buf);
 
 	result = (char *)_realloc(buf, i, bufs);

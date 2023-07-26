@@ -6,22 +6,19 @@
  */
 char *find_path(char *command)
 {
-	char *command_path = NULL, *copy = NULL, *token =NULL;
+	char *command_path = NULL, *copy = NULL, *token = NULL;
 	char *delimiter = ":", *full_path = NULL;
 	struct stat buffer;
-	ssize_t token_length = 0, commandLength = 0;
 
 	command_path = getenv("PATH");
 	if (!command_path)
 		return (NULL);
-	commandLength = _strlen(command_path);
-	copy = (char *)_malloc(commandLength);
+	copy = (char *)_malloc(_strlen(command_path));
 	_strcpy(copy, command_path);
 	token = strtok(copy, delimiter);
 	while (token != NULL)
 	{
-		token_length = _strlen(token);
-		full_path = (char *)_malloc(token_length + commandLength + 2);
+		full_path = (char *)_malloc(_strlen(token) + _strlen(command_path) + 2);
 		if (full_path == NULL)
 		{
 			free(copy);
