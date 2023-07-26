@@ -1,10 +1,11 @@
 #include "shell.h"
 
+int length(char **arg);
+
 /**
  * main - starts the simple shell
  * @argc: argument count
  * @av: argument vector
- * @env: environment vector
  * Return: 0
  */
 
@@ -27,6 +28,7 @@ int main(int argc, char **av)
 		execute(av, argv, args, 1);
 
 		free(args);
+		exit(98);
 	}
 	free(argv);
 
