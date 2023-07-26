@@ -25,18 +25,16 @@ int _shell(char **av)
 		ac = count_args(args);
 		argv = allocate_space(ac);
 		get_args(args, argv, delim);
+		special_commands(argv, env, args);
 
-		if (command_exist(argv[0], argv) == -1)
+		if (command_exist(argv[0]) == -1)
 		{
 			free_vector(argv);
 			free(argv);
 			perror("Error ");
 		}
 		else
-		{
-			special_commands(argv, env, args);
 			myfork(argv, args, av);
-		}
 	}
 	free(args);
 	return (0);
