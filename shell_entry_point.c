@@ -6,7 +6,6 @@ int length(char **arg);
  * main - starts the simple shell
  * @argc: argument count
  * @av: argument vector
- * @env: environment vector
  * Return: 0
  */
 
