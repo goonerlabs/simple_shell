@@ -10,7 +10,6 @@ int _shell(char **av)
 {
 	char *args = NULL, **argv = NULL, *delim = " \n", **env = environ;
 	int ac = 0;
-	pid_t child_id;
 	size_t size = 0;
 
 	while (1)
@@ -34,27 +33,7 @@ int _shell(char **av)
 		else
 		{*/
 			special_commands(argv, env, args);
-			child_id = fork();
-			if (child_id == -1)
-			{
-				free(args);
-				free_vector(argv);
-				free(argv);
-				exit(EXIT_FAILURE);
-			}
-			else if(child_id == 0)
-			{
-				execute(av, argv, args, 0);
-				free(args);
-				free_vector(argv);
-				free(argv);
-			}
-			else
-			{
-				wait(NULL);
-				free_vector(argv);
-				free(argv);
-			}
+			myfork(argv, args, av);
 		/*}*/
 	}
 	free(args);

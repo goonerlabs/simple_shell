@@ -47,5 +47,7 @@ int _atoi(char *s);
 void free_vector(char **arr);
 int command_exist(char *command, char **argv);
 char *get_env(char *name);
+void myfork(char **argv, char *args, char **av);
+char *_strchr(char *s, char c);
 
 #endif /* SHELL_H */
