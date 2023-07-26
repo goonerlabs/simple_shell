@@ -46,5 +46,6 @@ int __exit(char **av, char *args);
 int _atoi(char *s);
 void free_vector(char **arr);
 int command_exist(char *command, char **argv);
+char *get_env(char *name);
 
 #endif /* SHELL_H */

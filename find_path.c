@@ -10,7 +10,7 @@ char *find_path(char *command)
 	char *delimiter = ":", *full_path = NULL;
 	struct stat buffer;
 
-	command_path = getenv("PATH");
+	command_path = get_env("PATH");
 	if (!command_path)
 		return (NULL);
 	copy = (char *)_malloc(_strlen(command_path));
