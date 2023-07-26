@@ -19,7 +19,6 @@ int _shell(char **av)
 		if (get_line(&args, &size, STDIN_FILENO) == -1)
 		{
 			free(args);
-			print_string("Shell Exited!\n");
 			exit(EXIT_FAILURE);
 		}
 		ac = count_args(args);

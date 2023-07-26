@@ -15,13 +15,17 @@ int __exit(char **av, char *args)
 	{
 		stat_code = _atoi(av[1]);
 		free_vector(av);
+		free(av);
 		free(args);
 		exit(stat_code);
 	}
-	free_vector(av);
-	free(av);
-	free(args);
-	exit(stat_code);
+	else
+	{
+		free_vector(av);
+		free(av);
+		free(args);
+		exit(stat_code);
+	}
 
 	return (0);
 }
