@@ -16,25 +16,27 @@ int _shell(char **av)
 	{
 		if (isatty(STDIN_FILENO))
 			print_string("$ ");
-		if (getline(&args, &size, stdin) == -1)
+		if (get_line(&args, &size, STDIN_FILENO) == -1)
 		{
 			free(args);
-			perror("Shell Exited!");
+			print_string("Shell Exited!\n");
 			exit(EXIT_FAILURE);
 		}
 		ac = count_args(args);
 		argv = allocate_space(ac);
 		get_args(args, argv, delim);
-		/**if (command_exist(argv[0], argv) != 0)
+
+		if (command_exist(argv[0], argv) == -1)
 		{
-			free(args);
-			exit(EXIT_FAILURE);
+			free_vector(argv);
+			free(argv);
+			perror("Error ");
 		}
 		else
-		{*/
+		{
 			special_commands(argv, env, args);
 			myfork(argv, args, av);
-		/*}*/
+		}
 	}
 	free(args);
 	return (0);
