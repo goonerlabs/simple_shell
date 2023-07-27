@@ -26,7 +26,7 @@ int handle_env(char **env);
 ssize_t get_line(char **lineptr, size_t *n, int fd);
 char *get_memory(int bufs);
 char *reallocate_memory(char *buf, int bufs);
-void* _malloc(int size);
+void *_malloc(int size);
 int _putchar(char c);
 int print_string(char *str);
 int _strlen(char *str);
