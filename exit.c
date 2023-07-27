@@ -19,7 +19,6 @@ int __exit(char **av, char *args)
 		exit(stat_code);
 	}
 	free_vector(av);
-	free(av);
 	free(args);
 	exit(stat_code);
 

@@ -9,18 +9,25 @@
 int _shell(char **av)
 {
 	char *args = NULL, **argv = NULL, *delim = " \n", **env = environ;
-	int ac = 0;
+	int ac = 0, sig = 1;
 	size_t size = 0;
 
-	while (1)
+	while (sig)
 	{
 		if (isatty(STDIN_FILENO))
 			print_string("$ ");
+		else
+			sig = 0;
+		if (args != NULL)
+		{
+			free(args);
+			args = NULL;
+		}
 		if (get_line(&args, &size, STDIN_FILENO) == -1)
 		{
 			free(args);
-			print_string("Shell Exited!\n");
-			exit(EXIT_FAILURE);
+			free_vector(argv);
+			return (0);
 		}
 		ac = count_args(args);
 		argv = allocate_space(ac);
@@ -30,7 +37,6 @@ int _shell(char **av)
 		if (command_exist(argv[0]) == -1)
 		{
 			free_vector(argv);
-			free(argv);
 			perror("Error ");
 		}
 		else

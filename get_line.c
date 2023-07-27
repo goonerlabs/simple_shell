@@ -11,8 +11,7 @@
 ssize_t get_line(char **lineptr, size_t *n, int fd)
 {
 	static int defaultSize = 120;
-	ssize_t bufSize = 0;
-	ssize_t bytes = 0;
+	ssize_t bufSize = 0, bytes = 0;
 	char *buffer = NULL, c = 0;
 
 	if (lineptr == NULL || n == NULL)
@@ -44,8 +43,11 @@ ssize_t get_line(char **lineptr, size_t *n, int fd)
 			break;
 	}
 	buffer[bytes] = '\0';
-
 	if (bytes == 0 && c == '\0')
+	{
+		free(buffer);
+		*lineptr = NULL;
 		return (-1);
+	}
 	return (bytes);
 }
