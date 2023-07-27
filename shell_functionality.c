@@ -1,5 +1,17 @@
 #include "shell.h"
 
+void sigint_handler(void);
+/**
+ * sigint_handler - exits the shell with CTRL+C
+ */
+
+void sigint_handler(void)
+{
+	fflush(stdout);
+	print_string("/hsh: Quitting shell\n");
+	exit(EXIT_FAILURE);
+}
+
 /**
  * _shell - simple shell functionality
  * @av : array of arguments
@@ -12,6 +24,8 @@ int _shell(char **av)
 	int ac = 0;
 	size_t size = 0;
 
+	signal(SIGINT, sigint_handler);
+
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
@@ -19,7 +33,7 @@ int _shell(char **av)
 		if (get_line(&args, &size, STDIN_FILENO) == -1)
 		{
 			free(args);
-			exit(EXIT_FAILURE);
+			exit(EXIT_SUCCESS);
 		}
 		ac = count_args(args);
 		argv = allocate_space(ac);
@@ -30,7 +44,8 @@ int _shell(char **av)
 		{
 			free_vector(argv);
 			free(argv);
-			perror("Error ");
+			print_string(av[0]);
+			print_string(": No such file or directory\n");
 		}
 		else
 			myfork(argv, args, av);

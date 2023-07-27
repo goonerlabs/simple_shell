@@ -1,5 +1,34 @@
-## This file contains the name of the authors who contributed to this project
+.TH hsh 1 "26 July 2021" "Adeyemi & Oluwatobi" version 1.0" "Manual Page"
+.hy
+.SH NAME
+.PP
+hsh - Simple shell emulator
+.PP
+.SH SYNOPSIS
+#include "shell.h"
 
-1). Adeyemi Owolabi  <Email: aowolabiadewumi@yahoo.com>
-2). Akinola Oluwatobi  <Email: itsoluwatobby@gmail.com>
+hsh [options] [command | file]
+
+.SH OPTIONS
+.PP
+Most shell commands works on this shell
+
+.SH EXIT
+.PP
+Entring exit will quit the shell and it also takes a status option
+
+.SH AUTHORS
+.PP
+NAME:
+.Adeyemi Owolabi
+.RS i
+EMAIL:
+.aowolabiadewumi@yahoo.com
+
+.PP
+NAME:
+.Akinola Oluwatobi
+.RS i
+EMAIL:
+.itsoluwatobby@gmail.com>
 
