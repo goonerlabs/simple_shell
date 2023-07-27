@@ -25,7 +25,6 @@ int _shell(char **av)
 	size_t size = 0;
 
 	while (sig)
-	/*signal(SIGINT, sigint_handler);*/
 	{
 		if (isatty(STDIN_FILENO))
 			print_string("$ ");
@@ -38,8 +37,6 @@ int _shell(char **av)
 		}
 		if (get_line(&args, &size, STDIN_FILENO) == -1)
 		{
-			/*free(args);
-			free_vector(argv);*/
 			exit(EXIT_SUCCESS);
 		}
 		ac = count_args(args);
