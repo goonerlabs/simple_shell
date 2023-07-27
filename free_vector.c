@@ -17,4 +17,5 @@ void free_vector(char **arr)
 		arr[i] = NULL;
 		i++;
 	}
+	free(arr);
 }

@@ -21,18 +21,25 @@ void sigint_handler(void)
 int _shell(char **av)
 {
 	char *args = NULL, **argv = NULL, *delim = " \n", **env = environ;
-	int ac = 0;
+	int ac = 0, sig = 1;
 	size_t size = 0;
 
-	signal(SIGINT, sigint_handler);
-
-	while (1)
+	while (sig)
+	/*signal(SIGINT, sigint_handler);*/
 	{
 		if (isatty(STDIN_FILENO))
 			print_string("$ ");
-		if (get_line(&args, &size, STDIN_FILENO) == -1)
+		else
+			sig = 0;
+		if (args != NULL)
 		{
 			free(args);
+			args = NULL;
+		}
+		if (get_line(&args, &size, STDIN_FILENO) == -1)
+		{
+			/*free(args);
+			free_vector(argv);*/
 			exit(EXIT_SUCCESS);
 		}
 		ac = count_args(args);
@@ -43,7 +50,7 @@ int _shell(char **av)
 		if (command_exist(argv[0]) == -1)
 		{
 			free_vector(argv);
-			free(argv);
+			perror("Error ");
 			print_string(av[0]);
 			print_string(": No such file or directory\n");
 		}

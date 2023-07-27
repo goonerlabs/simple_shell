@@ -18,7 +18,6 @@ void myfork(char **argv, char *args, char **av)
 			{
 				free(args);
 				free_vector(argv);
-				free(argv);
 				exit(EXIT_FAILURE);
 			}
 			else if (child_id == 0)
@@ -26,12 +25,10 @@ void myfork(char **argv, char *args, char **av)
 				execute(av, argv, args, 0);
 				free(args);
 				free_vector(argv);
-				free(argv);
 			}
 			else
 			{
 				wait(NULL);
 				free_vector(argv);
-				free(argv);
 			}
 }

@@ -21,7 +21,6 @@ int execute(char **av, char **argv, char *args, int i)
 		print_string(": No such file or directory\n");
 		free(args);
 		free_vector(argv);
-		free(argv);
 		free(full_path);
 		exit(EXIT_FAILURE);
 	}
