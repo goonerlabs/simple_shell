@@ -1,5 +1,7 @@
 #include "shell.h"
 
+int length(char **arg);
+
 /**
  * main - starts the simple shell
  * @argc: argument count
