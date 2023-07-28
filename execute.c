@@ -7,7 +7,7 @@
  * @argv: arguments to program
  * @i: argument position
  *
- * Return: 1 if succesful and 0 otherwise
+ * Return: 0 if succesful and 1 otherwise
  */
 
 int execute(char **av, char **argv, char *args, int i)
@@ -22,8 +22,8 @@ int execute(char **av, char **argv, char *args, int i)
 		free_vector(argv);
 		free(full_path);
 		perror("./hsh ");
-		return (0);
+		return (1);
 	}
 	free(full_path);
-	return (1);
+	return (0);
 }
