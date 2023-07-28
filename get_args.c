@@ -19,6 +19,11 @@ int get_args(char *args, char **argv, char *delim)
 	_strcpy(temp, args);
 
 	tok = strtok(temp, delim);
+	if (temp == NULL)
+	{
+		perror("./hsh ");
+		return (0);
+	}
 	while (tok)
 	{
 		argv[i] = (char *)_malloc(_strlen(tok));

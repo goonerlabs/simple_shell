@@ -4,7 +4,7 @@
  * __exit - exits the shell
  * @av: the arguments vector
  * @args: the environment vector
- * Return: void
+ * Return: 1 onSuccesss
  */
 
 int __exit(char **av, char *args)
@@ -17,6 +17,7 @@ int __exit(char **av, char *args)
 	free_vector(av);
 	free(args);
 	exit(stat_code);
+	return (1);
 }
 
 

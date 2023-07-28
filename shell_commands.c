@@ -12,7 +12,7 @@ int special_commands(char **command, char **env, char *args)
 {
 	if (_strcmp(command[0], "exit") == 0)
 		return (__exit(command, args));
-	if (_strcmp(command[0], "env") == 0)
+	if (_strcmp(command[0], "env") == 1)
 		return (handle_env(env));
 	/**
 	 * if (_strcmp(command[0], "cd") == 0)
