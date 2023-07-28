@@ -3,7 +3,7 @@
 /**
  * _shell - simple shell functionality
  * @av : array of arguments
- * Return: 0
+ * Return: 1
  */
 
 int _shell(char **av)
