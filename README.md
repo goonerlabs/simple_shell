@@ -1,20 +1,11 @@
-# Simple Shell
+# SIMPLE_SHELL																L
+This shell is a command-line emulator that provides an interface for Unix operating systems.
 
-> Learning Objectives
-At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
+It is both an interactive command language and a scripting language, and is used by the operating system to control the execution of the system using shell scripts.                                         
+                                                                                
+main.c
+Contains the main code of the shell where all the rest of the other functions are used to make the shell run.
 
-> _**General**_
-* Who designed and implemented the original Unix operating system
-* Who wrote the first version of the UNIX shell
-* Who invented the B programming language (the direct predecessor to the C programming language)
-* Who is Ken Thompson
-* How does a shell work
-* What is a pid and a ppid
-* How to manipulate the environment of the current process
-* What is the difference between a function and a system call
-* How to create processes
-* What are the three prototypes of main
-* How does the shell use the PATH to find the programs
-* How to execute another program with the execve system call
-* How to suspend the execution of a process until one of its children terminates
-* What is EOF / “end-of-file”?
+Makes the Shell run continously and also listens for signals when a user presses ctrl + c
+
+Returns 0 on success and 1 when something goes wrong as the shell

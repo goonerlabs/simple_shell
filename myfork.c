@@ -6,19 +6,22 @@
  * @args: arguments
  * @av: shell argument vector
  *
- * Return: void
+ * Return: onSuccess(1), otherwise(0)
  */
 
-void myfork(char **argv, char *args, char **av)
+int myfork(char **argv, char *args, char **av)
 {
 			pid_t child_id;
+
+			if (args == NULL)
+				return (0);
 
 			child_id = fork();
 			if (child_id == -1)
 			{
 				free(args);
 				free_vector(argv);
-				exit(EXIT_FAILURE);
+				perror("./hsh ");
 			}
 			else if (child_id == 0)
 			{
@@ -31,4 +34,5 @@ void myfork(char **argv, char *args, char **av)
 				wait(NULL);
 				free_vector(argv);
 			}
+			return (1);
 }

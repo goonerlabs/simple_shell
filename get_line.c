@@ -2,51 +2,51 @@
 
 /**
  * get_line - function that acts like getline function
- * @lineptr: agrguments parsed
- * @n: init size is 0
- * @fd: file descriptor
+ * @strptr: agrguments parsed
+ * @size: init size is 0
+ * @fdesc: file descriptor
  * Return: 0 on succes, otherwise -1
  */
 
-ssize_t get_line(char **lineptr, size_t *n, int fd)
+ssize_t get_line(char **strptr, size_t *size, int fdesc)
 {
-	static int defaultSize = 120;
-	ssize_t bufSize = 0, bytes = 0;
-	char *buffer = NULL, c = 0;
+	static size_t defaultBufferSize = 120;
+	ssize_t bufferSize = 0, bytes = 0;
+	char *buffer = NULL;
+	char buf = 0;
 
-	if (lineptr == NULL || n == NULL)
+	if (strptr == NULL || size == NULL)
 		return (-1);
-	if (*lineptr == NULL || *n == 0)
+	if (*strptr == NULL || *size == 0)
 	{
-		bufSize = defaultSize;
-		buffer = get_memory(bufSize);
-		*lineptr = buffer;
-		*n = bufSize;
+		bufferSize = defaultBufferSize;
+		buffer = (char *)_malloc(bufferSize);
+		*strptr = buffer;
+		*size = bufferSize;
 	}
 	else
 	{
-		buffer = *lineptr;
-		bufSize = *n;
+		buffer = *strptr;
+		bufferSize = *size;
 	}
-	while (read(fd, &c, 1) > 0)
+	while (read(fdesc, &buf, 1) > 0)
 	{
-		buffer[bytes] = c;
+		buffer[bytes] = buf;
 		bytes++;
-		if (bytes >= bufSize)
+		if (bytes >= bufferSize)
 		{
-			bufSize = bufSize * 2;
-			buffer = reallocate_memory(buffer, bufSize);
-			*lineptr = buffer;
-			*n = bufSize;
+			buffer = reallocate_memory(buffer, (bufferSize * 2));
+			*strptr = buffer;
+			*size = bufferSize;
 		}
-		if (c == '\n')
+		if (buf == '\n')
 			break;
 	}
 	buffer[bytes] = '\0';
-	if (bytes == 0 && c == '\0')
+	if (bytes == 0 && buf == '\0')
 	{
 		free(buffer);
-		*lineptr = NULL;
+		*strptr = NULL;
 		return (-1);
 	}
 	return (bytes);

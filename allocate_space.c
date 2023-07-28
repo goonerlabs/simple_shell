@@ -12,6 +12,6 @@ char **allocate_space(int size)
 
 	p = malloc(sizeof(char *) * (size + 1));
 	if (p == NULL)
-		exit(EXIT_FAILURE);
+		return (NULL);
 	return (p);
 }

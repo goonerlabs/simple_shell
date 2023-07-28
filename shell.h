@@ -23,7 +23,7 @@ int tokenize(char *args, char **av);
 int execute(char **av, char **argv, char *args, int i);
 char *find_path(char *command);
 int handle_env(char **env);
-ssize_t get_line(char **lineptr, size_t *n, int fd);
+ssize_t get_line(char **strptr, size_t *size, int fdesc);
 char *get_memory(int bufs);
 char *reallocate_memory(char *buf, int bufs);
 void *_malloc(int size);
@@ -46,7 +46,8 @@ int _atoi(char *s);
 void free_vector(char **arr);
 int command_exist(char *command);
 char *get_env(char *name);
-void myfork(char **argv, char *args, char **av);
+int myfork(char **argv, char *args, char **av);
 char *_strchr(char *s, char c);
+void signal_handler(int sig);
 
 #endif /* SHELL_H */
