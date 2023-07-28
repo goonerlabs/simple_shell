@@ -4,15 +4,19 @@
  * handle_env - function that handles env command
  * @env: environment variable
  *
- * Return: onSuccess(1)
+ * Return: onSuccess(0)
  */
 
 int handle_env(char **env)
 {
-	int index = 0;
+	for (; *env != NULL; env++)
+	{
+		int length = 0;
 
-	for (; env[index]; index++)
-		printf("%s\n", env[index]);
-
-	return (1);
+		while ((*env)[length] != '\0')
+			length++;
+		write(STDOUT_FILENO, *env, length);
+		write(STDOUT_FILENO, "\n", 1);
+	}
+	return (0);
 }
