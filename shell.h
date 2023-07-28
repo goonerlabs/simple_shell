@@ -14,6 +14,20 @@
 
 extern char **environ;
 
+/**
+ * struct Alias - information on Alias data type
+ * @name: name of alias
+ * @value: alias value
+ * @next: points to the next alias
+ */
+
+typedef struct Alias
+{
+	char name[50];
+	char value[100];
+	struct Alias* next;
+} Alias;
+
 int _shell(char **av);
 int count_args(char *str);
 char **allocate_space(int size);
@@ -49,5 +63,10 @@ char *get_env(char *name);
 int myfork(char **argv, char *args, char **av);
 char *_strchr(char *s, char c);
 void signal_handler(int sig);
+char *change_alias_value(char *command);
+void create_alias(Alias **alias_list, char *name, char *value);
+void delete_alias(char *name);
+void get_list(Alias *alias_list);
+void free_memory(Alias *alias_list);
 
 #endif /* SHELL_H */

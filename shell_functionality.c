@@ -22,10 +22,8 @@ int _shell(char **av)
 			print_string("$ ");
 
 		if (get_line(&args, &size, STDIN_FILENO) == -1)
-		{
-			free(args);
 			return (0);
-		}
+
 		ac = count_args(args);
 		argv = allocate_space(ac);
 		if (argv == NULL)
