@@ -12,6 +12,7 @@ int _shell(void)
 	char *input = NULL, **args = NULL;
 	int repl = 1;
 
+	signal(SIGINT, signal_callback_func);
 	while (repl)
 	{
 		repl = isatty(STDIN_FILENO);
@@ -32,5 +33,4 @@ int _shell(void)
 		free(args);
 	}
 	return (0);
-
 }

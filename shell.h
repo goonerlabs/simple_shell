@@ -31,5 +31,6 @@ char *get_user_input(void);
 char **tokenize_input(char *input);
 int _exec(char **args);
 int _shell(void);
+void signal_callback_func(int sig);
 
 #endif /* SHELL_H */
