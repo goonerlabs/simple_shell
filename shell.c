@@ -20,7 +20,12 @@ int _shell(void)
 			print_str("($) ");
 		input = get_user_input();
 		if (!input)
-			return (1);
+			return (0);
+		if (_strcmp(input, "exit") == 0)
+		{
+			free(input);
+			return (0);
+		}
 		args = tokenize_input(input);
 		if (!args)
 		{
