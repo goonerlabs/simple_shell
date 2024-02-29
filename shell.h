@@ -12,8 +12,9 @@
 #include <errno.h>
 #include <signal.h>
 
-#define MAX_ARGS_SIZE 2040
+#define MAX_ARGS_SIZE 1024
 
+extern char **environ;
 int _putchar(char c);
 int _strlen(char *str);
 int _strcmp(char *s1, char *s2);
@@ -32,5 +33,8 @@ char **tokenize_input(char *input);
 int _exec(char **args);
 int _shell(void);
 void signal_callback_func(int sig);
+char *_get_env_var(char *var);
+char **_get_env_dir(char *p);
+char *get_full_path(char *cmd);
 
 #endif /* SHELL_H */

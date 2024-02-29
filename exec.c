@@ -4,35 +4,39 @@
  * _exec - executes a command
  * @args: the command and it's arguments
  *
- * Return: 0 on success, 1 on failure
+ * Return: 1 success, 0 fail
  */
 
 int _exec(char **args)
 {
 	pid_t pid;
+	int child_status;
+	char *cmd = args[0];
 
 	if (args[0] == NULL)
 	{
 		perror("hsh");
-		return (1);
+		return (0);
 	}
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(args[0], args, NULL) == -1)
+		if (cmd[0] != '/' && cmd[0] != '.')
+			cmd = get_full_path(cmd);
+		if (cmd == NULL)
+		{
+			perror("hsh");
+			return (0);
+		}
+		if (execve(cmd, args, NULL) == -1)
 		{
 			perror("hsh");
 			exit(EXIT_FAILURE);
 		}
 	}
-	else if (pid < 0)
-	{
-		perror("hsh");
-		exit(EXIT_FAILURE);
-	}
 	else
 	{
-		wait(NULL);
+		wait(&child_status);
 	}
-	return (0);
+	return (1);
 }
