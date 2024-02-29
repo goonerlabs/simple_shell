@@ -40,5 +40,7 @@ char *get_full_path(char *cmd);
 void _print_environment_vars(void);
 int _exit_shell(char **args, char *input);
 char *_strtok(char *s, char *d);
-
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+int _getline(char **ptr, size_t *n, int fd);
+char *__realloc(char *ptr, int size);
 #endif /* SHELL_H */

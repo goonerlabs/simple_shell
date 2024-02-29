@@ -12,7 +12,7 @@ char *get_user_input(void)
 	int characters;
 	size_t n = 0;
 
-	characters = getline(&str, &n, stdin);
+	characters = _getline(&str, &n, STDIN_FILENO);
 	if (characters == -1)
 	{
 		free(str);
