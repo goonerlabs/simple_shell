@@ -36,5 +36,6 @@ void signal_callback_func(int sig);
 char *_get_env_var(char *var);
 char **_get_env_dir(char *p);
 char *get_full_path(char *cmd);
+void _print_environment_vars(void);
 
 #endif /* SHELL_H */

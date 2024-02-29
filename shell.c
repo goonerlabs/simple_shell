@@ -26,6 +26,12 @@ int _shell(void)
 			free(input);
 			return (0);
 		}
+		if (_strcmp(input, "env") == 0)
+		{
+			_print_environment_vars();
+			free(input);
+			continue;
+		}
 		args = tokenize_input(input);
 		if (!args)
 		{
