@@ -21,11 +21,6 @@ int _shell(void)
 		input = get_user_input();
 		if (!input)
 			return (0);
-		if (_strcmp(input, "exit") == 0)
-		{
-			free(input);
-			return (0);
-		}
 		if (_strcmp(input, "env") == 0)
 		{
 			_print_environment_vars();
@@ -39,6 +34,8 @@ int _shell(void)
 			free(args);
 			continue;
 		}
+		if (_strcmp(args[0], "exit") == 0)
+			_exit_shell(args, input);
 		_exec(args);
 		free(input);
 		free(args);

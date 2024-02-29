@@ -37,5 +37,6 @@ char *_get_env_var(char *var);
 char **_get_env_dir(char *p);
 char *get_full_path(char *cmd);
 void _print_environment_vars(void);
+int _exit_shell(char **args, char *input);
 
 #endif /* SHELL_H */

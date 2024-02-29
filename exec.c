@@ -15,7 +15,7 @@ int _exec(char **args)
 
 	if (args[0] == NULL)
 	{
-		perror("hsh");
+		perror("./shell: ");
 		return (0);
 	}
 	pid = fork();
@@ -25,12 +25,12 @@ int _exec(char **args)
 			cmd = get_full_path(cmd);
 		if (cmd == NULL)
 		{
-			perror("hsh");
+			perror("./shell: ");
 			return (0);
 		}
 		if (execve(cmd, args, NULL) == -1)
 		{
-			perror("hsh");
+			perror("./shell: ");
 			exit(EXIT_FAILURE);
 		}
 	}

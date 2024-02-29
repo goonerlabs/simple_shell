@@ -15,7 +15,7 @@ char **tokenize_input(char *input)
 	toks = malloc(MAX_ARGS_SIZE * sizeof(char *));
 	if (!toks)
 	{
-		perror("hsh");
+		perror("./shell: ");
 		exit(EXIT_FAILURE);
 	}
 	tok = strtok(input, delim);
