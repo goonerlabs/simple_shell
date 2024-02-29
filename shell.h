@@ -22,6 +22,7 @@ char *_strcpy(char *dest, char *src);
 char *_strdup(char *str);
 char *_strcat(char *dest, char *src);
 char *_strchr(char *s, char c);
+char *_strpbrk(char *s1, char *s2);
 unsigned int _strspn(char *s, char *accept);
 int _strncmp(char *str1, char *str2, int c);
 int _strcspn(char *s1, char *s2);
@@ -38,5 +39,6 @@ char **_get_env_dir(char *p);
 char *get_full_path(char *cmd);
 void _print_environment_vars(void);
 int _exit_shell(char **args, char *input);
+char *_strtok(char *s, char *d);
 
 #endif /* SHELL_H */

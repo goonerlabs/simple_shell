@@ -18,12 +18,12 @@ char **tokenize_input(char *input)
 		perror("./shell: ");
 		exit(EXIT_FAILURE);
 	}
-	tok = strtok(input, delim);
+	tok = _strtok(input, delim);
 	while (tok)
 	{
 		toks[n] = tok;
 		n++;
-		tok = strtok(NULL, delim);
+		tok = _strtok(NULL, delim);
 	}
 	toks[n] = NULL;
 	return (toks);

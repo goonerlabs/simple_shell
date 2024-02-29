@@ -17,12 +17,12 @@ char **_get_env_dir(char *p)
 	{
 		return (NULL);
 	}
-	tok = strtok(path, delim);
+	tok = _strtok(path, delim);
 	while (tok)
 	{
 		toks[n] = tok;
 		n++;
-		tok = strtok(NULL, delim);
+		tok = _strtok(NULL, delim);
 	}
 	toks[n] = NULL;
 	return (toks);
