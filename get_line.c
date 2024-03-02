@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * get_line - gets input from stdin
+ *_getline - gets input from stdin
  *@ptr: the buffer
  *@n: the size of the buffer
  *@fd: the file descriptor
